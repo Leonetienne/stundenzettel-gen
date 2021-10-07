@@ -10,8 +10,11 @@ sed -i '' 's/{{DATE_WEDNESDAY}}/'"$2"'/g' tmp.html
 sed -i '' 's/{{DATE_THURSDAY}}/'"$3"'/g' tmp.html
 
 # Generate image
-#pageres file:///"`pwd`/tmp.html" 3360x1200 --filename="renders/$1" --overwrite
-pageres file:///"`pwd`/tmp.html" 1500x1200 --filename="renders/$1" --overwrite
+pageres file:///"`pwd`/tmp.html" 1500x1200 --filename="renders/kw_$1" --overwrite
+
+# Convert to pdf
+convert "renders/kw_$1.png" "renders/kw_$1.pdf"
 
 # Cleanup
-#rm -f tmp.html
+rm -f tmp.html
+rm -f "renders/kw_$1.png"
